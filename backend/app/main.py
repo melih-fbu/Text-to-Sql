@@ -15,15 +15,21 @@ from app.routers import health, chat, schemas, queries, slack_events
 async def lifespan(app: FastAPI):
     """Startup and shutdown events."""
     # Initialize metadata database
-    await init_db()
-    print("✅ Metadata database initialized")
+    try:
+        await init_db()
+        print("✅ Metadata database initialized")
+    except Exception as e:
+        print(f"⚠️ Database initialization skipped or failed: {e}")
 
     # Create demo data if not exists
-    if not os.path.exists(settings.demo_database_path):
-        create_demo_database(settings.demo_database_path)
-        print("✅ Demo database created with sample data")
-    else:
-        print("✅ Demo database already exists")
+    try:
+        if not os.path.exists(settings.demo_database_path):
+            create_demo_database(settings.demo_database_path)
+            print("✅ Demo database created with sample data")
+        else:
+            print("✅ Demo database already exists")
+    except Exception as e:
+        print(f"⚠️ Demo database creation skipped or failed: {e}")
 
     yield
 

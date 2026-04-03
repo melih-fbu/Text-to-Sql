@@ -20,8 +20,8 @@ class Settings(BaseSettings):
     google_application_credentials: Optional[str] = None
 
     # Database
-    database_url: str = "sqlite+aiosqlite:///./bruin.db"
-    demo_database_path: str = "./demo_data.db"
+    database_url: str = os.getenv("DATABASE_URL", "sqlite+aiosqlite:///./bruin.db")
+    demo_database_path: str = os.getenv("DEMO_DATABASE_PATH", "./demo_data.db")
 
     # Settings
     max_query_rows: int = 1000
