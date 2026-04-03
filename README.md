@@ -1,4 +1,4 @@
-# 🤖 Truin — AI Veri Asistanı
+# 🤖 Bruin — AI Veri Asistanı
 
 Doğal dil ile şirket verilerinizi sorgulayın. SQL yazmaya gerek yok! Slack veya web arayüzü üzerinden soru sorun, Bruin arka planda **Gemini AI** ile SQL üretir, veritabanında çalıştırır ve sonuçları anlaşılır şekilde sunar.
 
